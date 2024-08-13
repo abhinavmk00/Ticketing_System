@@ -25,6 +25,8 @@
    - `gold`: A pointer to a `Type` structure representing Gold seats.
    - `vip`: A pointer to a `Type` structure representing VIP seats.
 
+![data structure implementation](./pics/1.jpeg)
+
 **Functions**:
 1. **init_screen**:
    - **Description**: Initializes a `Screen` structure with given Gold, Silver, and VIP seat types.

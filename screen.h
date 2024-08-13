@@ -4,6 +4,9 @@
 #define RESULT_SIZE 30
 #define PHONE_SIZE 11
 #define NAME_SIZE 30
+#define SUCCESS 1
+#define FAILURE -1
+#define MEM_ALLOC_FAIL NULL
 
 #include<stdlib.h>
 #include<stdio.h>
@@ -21,7 +24,7 @@ struct _seat_
     char name[NAME_SIZE];
     int block;
 };
-typedef struct _steat_ Seat;
+typedef struct _seat_ Seat;
 
 struct _type_
 {
@@ -38,12 +41,13 @@ struct _screen_
 };
 typedef struct _screen_ Screen;
 
-
-Screen* init_screen(Type gold,Type silver,Type vip);
-int add_screen(Type gold,Type silver,Type vip,Result *);
-int display_screen(Screen *);
-int book_seat(Screen *,Type *,Seat data,Result *);
-int total_price(Screen *,Type *,char data,Result *);
+Type* init_type(int size,int price,Result *);//abhinav
+Screen* init_screen(Type gold,Type silver,Type vip,Result *);//abhinav
+int add_screen(Type gold,Type silver,Type vip,Result *);//bhavana
+int display_screen(Screen *);//chinthan
+int book_seat(Screen *,Type *,Seat data,Result *);//meghana
+int cancle_seat(Screen *,Type *,Seat data,Result *);//sanjith
+int total_price(Screen *,Type *,char data,Result *);//subeen
 
 
 #endif
