@@ -61,6 +61,34 @@ Screen* init_screen(Type gold,Type silver,Type vip,Result *result)//abhinav
     return my_screen;    
 }
 
+//Cancel functionality
+int cancle_seat(Screen *screen, Type *type, Seat data, Result *result) {
+    // Check if the pointers are valid
+    if (screen == NULL || type == NULL) {
+        result->result_status = FAILURE;
+        snprintf(result->result_message, RESULT_SIZE, "Invalid screen or type pointer.");
+        return FAILURE;
+    }
+
+    // Iterate over the seats in the type
+    for (int i = 0; i < type->c_size; i++) {
+        if (strcmp(type->seat[i].phone, data.phone) == 0 && type->seat[i].block == data.block) {
+            // Seat found, cancel it
+            type->seat[i].phone[0] = '\0';  // Clear the phone number
+            type->seat[i].name[0] = '\0';   // Clear the name
+            type->seat[i].block = 0;        // Reset the block
+
+            result->result_status = SUCCESS;
+            snprintf(result->result_message, RESULT_SIZE, "Seat successfully canceled.");
+            return SUCCESS;
+        }
+    }
+
+    // Seat not found
+    result->result_status = FAILURE;
+    snprintf(result->result_message, RESULT_SIZE, "Seat not found.");
+    return FAILURE;
+}
 /*
 int add_screen(Type gold,Type silver,Type vip,Result *);//bhavana
 int display_screen(Screen *,Result *);//chinthan
