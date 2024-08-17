@@ -18,13 +18,13 @@ struct _result_
 };
 typedef struct _result_ Result;
 
-struct _seat_
-{
+struct _Seat_ {
     char phone[PHONE_SIZE];
     char name[NAME_SIZE];
-    int block;
+    int seat_number;
+    int booked; // 0: available, 1: booked
 };
-typedef struct _seat_ Seat;
+typedef struct _Seat_ Seat;
 
 struct _type_
 {
@@ -41,13 +41,15 @@ struct _screen_
 };
 typedef struct _screen_ Screen;
 
-Type* init_type(int size,int price,Result *);//abhinav
-Screen* init_screen(Type gold,Type silver,Type vip,Result *);//abhinav
-int add_screen(Type gold,Type silver,Type vip,Result *);//bhavana
-int display_screen(Screen *);//chinthan
-int book_seat(Screen *,Type *,Seat data,Result *);//meghana
-int cancle_seat(Screen *,Type *,Seat data,Result *);//sanjith
-int total_price(Screen *,Type *,char data,Result *);//subeen
+Type* init_type(int size,int price,Result *);
+Screen* init_screen(Type gold,Type silver,Type vip,Result *);
+void display_menu();
+void display_seating();
+int book_seat(Screen *screen, Type *type, Seat data, int seat_number, Result *result);
+int cancel_seat(Screen *screen, int seat_number, const char *phone, Result *result);
+int total_price(Screen *,Type *,char data,Result *);
+
+
 
 
 #endif
