@@ -47,7 +47,41 @@ int add_screen(Type gold,Type silver,Type vip,Result *);//bhavana
 int display_screen(Screen *);//chinthan
 int book_seat(Screen *,Type *,Seat data,Result *);//meghana
 int cancle_seat(Screen *,Type *,Seat data,Result *);//sanjith
-int total_price(Screen *,Type *,char data,Result *);//subeen
+int total_price(Screen *,Type *,char data,Result *);
+#include "screen.h"
+
+int total_price(Screen *screen, Type *type, char category, Result *result) {
+    int total_seats;
+    int price_per_seat;
+    
+    // Determine the seat category and retrieve the corresponding type
+    switch (category) {
+        case 'S':  // Silver
+            type = screen->silver;
+            break;
+        case 'G':  // Gold
+            type = screen->gold;
+            break;
+        case 'V':  // VIP
+            type = screen->vip;
+            break;
+        default:
+            result->result_status = FAILURE;
+            snprintf(result->result_message, RESULT_SIZE, "Invalid seat category");
+            return FAILURE;
+    }
+
+    // Calculate the total price
+    total_seats = type->c_size; // Assuming c_size contains the number of booked seats
+    price_per_seat = type->price;
+    int total_price = total_seats * price_per_seat;
+
+    // Update the result structure
+    result->result_status = SUCCESS;
+    snprintf(result->result_message, RESULT_SIZE, "Total price calculated successfully");
+
+    return total_price;
+}
 
 
 #endif
