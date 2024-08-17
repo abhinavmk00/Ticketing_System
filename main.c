@@ -26,5 +26,6 @@ int main()
     assert(screen_1->gold != MEM_ALLOC_FAIL);
     assert(screen_1->vip != MEM_ALLOC_FAIL);
 
+    cases(screen_1, result);
     return 0;
 }
