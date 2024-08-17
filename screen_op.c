@@ -63,6 +63,15 @@ Screen* init_screen(Type gold,Type silver,Type vip,Result *result)//abhinav
 
 /*
 int add_screen(Type gold,Type silver,Type vip,Result *);//bhavana
+void initializeScreens(Screen *screens, int numScreens, int *vipSeats, int *goldSeats, int *silverSeats, int *vipPrice, int *goldPrice, int *silverPrice) {
+    for (int i = 0; i < numScreens; i++) {
+        screens[i].screenNumber = i + 1;
+        initializeSeats(&screens[i].VIP, vipSeats[i], vipPrice[i]);
+        initializeSeats(&screens[i].GOLD, goldSeats[i], goldPrice[i]);
+        initializeSeats(&screens[i].SILVER, silverSeats[i], silverPrice[i]);
+    }
+}
+
 int display_screen(Screen *,Result *);//chinthan
 int book_seat(Screen *,Type *,Seat data,Result *);//meghana
 int cancle_seat(Screen *,Type *,Seat data,Result *);//sanjith
